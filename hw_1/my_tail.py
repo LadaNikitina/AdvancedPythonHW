@@ -28,6 +28,6 @@ def my_tail_main_func(args):
         lines = sys.stdin.readlines()
         print("".join(my_tail(lines, 17)), end = "")
 
-    
-args = sys.argv
-my_tail_main_func(args)
+if __name__ == '__main__':  
+    args = sys.argv
+    my_tail_main_func(args)

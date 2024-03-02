@@ -21,6 +21,7 @@ def my_nl(args, max_width = 6):
     
     for i, line in enumerate(lines):
         print(f"{i + 1 : > {max_width}}\t{line[: -1]}")
-         
-args = sys.argv
-my_nl(args)
+
+if __name__ == '__main__':   
+    args = sys.argv
+    my_nl(args)

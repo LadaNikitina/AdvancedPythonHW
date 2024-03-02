@@ -42,6 +42,6 @@ def my_wc_main_func(args):
         
         print(f"{all_num_lines : > 3}{all_num_words : > 4}{all_num_bytes : > 4}")
 
-    
-args = sys.argv
-my_wc_main_func(args)
+if __name__ == '__main__':
+    args = sys.argv
+    my_wc_main_func(args)
