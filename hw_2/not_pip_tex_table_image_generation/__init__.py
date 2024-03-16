@@ -1,1 +1,1 @@
-from .tex_table_image_generation import get_tex_table, get_tex_image
+from .not_pip_tex_table_image_generation import get_tex_table, get_tex_image
