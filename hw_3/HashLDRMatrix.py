@@ -10,7 +10,7 @@ class LDRMatrix(LDRHashMixin):
     cache = {}
     
     def __init__(self, matrix):        
-        self.matrix = matrix
+        self.matrix = tuple(matrix)
         self.shape = (len(matrix), len(matrix[0]))
 
     def __add__(self, second_matrix):
