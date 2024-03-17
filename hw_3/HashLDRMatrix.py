@@ -1,5 +1,15 @@
-class LDRMatrix:
-    def __init__(self, matrix):
+class LDRHashMixin:
+    def __hash__(self):
+        # хэш функция - это сумма элементов в матрице
+        # коллизия достаточно очевидна
+        
+        matrix_hash = sum([sum(row) for row in self.matrix])
+        return matrix_hash
+
+class LDRMatrix(LDRHashMixin):
+    cache = {}
+    
+    def __init__(self, matrix):        
         self.matrix = matrix
         self.shape = (len(matrix), len(matrix[0]))
 
@@ -31,16 +41,22 @@ class LDRMatrix:
             ] for i in range(self.shape[0])
         ])
 
-    def __matmul__(self, second_matrix):
+    def __matmul__(self, second_matrix):        
         if self.shape[1] != second_matrix.shape[0]:
             raise ValueError("Wrong Input!")
             
-        return LDRMatrix([
+        cache_key = (hash(self), hash(second_matrix))
+        
+        if cache_key in LDRMatrix.cache:
+            return LDRMatrix.cache[cache_key]
+        
+        LDRMatrix.cache[cache_key] = LDRMatrix([
             [
                 sum(self.matrix[i][k] * second_matrix.matrix[k][j] for k in range(self.shape[1]))
                 for j in range(self.shape[1])
             ] for i in range(self.shape[0])
         ])
+        return LDRMatrix.cache[cache_key]
 
     def __str__(self):
         max_element_len = max(3, max([
@@ -55,4 +71,3 @@ class LDRMatrix:
                 for i in range(self.shape[0])
             ]
         ) + "]"
-    

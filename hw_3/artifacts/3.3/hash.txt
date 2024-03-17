@@ -1,0 +1,2 @@
+Real hash A@B 9, cached hash A@B 9
+Real hash C@D 9, cached hash C@D 9
