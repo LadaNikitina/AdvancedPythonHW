@@ -1,0 +1,3 @@
+Synchronous, n = 32: 5.423691749572754
+Threading, n = 32: 6.50483250617981
+Multiprocessing, n = 32: 0.5457656383514404
